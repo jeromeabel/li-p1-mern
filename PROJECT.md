@@ -39,9 +39,13 @@
   - C : '/add' Ajouter un post avec <db>.<collection>.insertOne({title:"Hello", content:"Lorem"});
   - C : '/add' Ajouter un post avec le body .insertOne(req.body);
   - Dans Postman, requêtes Post + Body + JSON avec { "title":"New title", "content":"New Content"}
-- [ ] Configurer le client
+- [x] Configurer le client
   - yarn create vite client --template react
-- [ ] ...
+  - cd client && yarn install && yarn dev
+  - Extension React Dev Tools
+- [ ] Front : Créer la navigation
+  - Installer react-router-dom : yarn add react-router-dom
+  -
 - [ ] ...
 - [ ] ...
 - [ ] ...
