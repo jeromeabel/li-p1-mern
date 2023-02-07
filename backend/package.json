@@ -1,0 +1,36 @@
+{
+  "name": "li-p1-mern",
+  "version": "0.0.1",
+  "description": "Créer et déployer un site full-stack MERN",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromeabel/li-p1-mern.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "React",
+    "Node"
+  ],
+  "author": "Jérôme Abel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeromeabel/li-p1-mern/issues"
+  },
+  "homepage": "https://github.com/jeromeabel/li-p1-mern#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.0.0",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2"
+  }
+}
