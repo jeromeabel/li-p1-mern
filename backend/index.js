@@ -1,11 +1,12 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 const app = express();
 const port = 4000;
 app.use(express.json());
-
+app.use(cors());
 dotenv.config();
 
 // const uri = process.env.STRING_URI;
@@ -16,7 +17,7 @@ async function runDB() {
   try {
     await client.connect();
     await client.db('blog').command({ ping: 1 });
-    console.log('Connected successfully to server');
+    console.log('Connected successfully to the Mongo database');
   } catch (err) {
     console.log(err);
   } finally {

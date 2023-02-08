@@ -1,5 +1,13 @@
 # PROJECT
 
+## Notes
+
+- .jsx
+- import React
+- Outlet au lieu de children
+- mocke : module.exports data = export const p
+- key={item.\_id} au lieu de {item.id}
+
 ## TASKS
 
 - [x] Configurer le projet Node
@@ -23,8 +31,8 @@
   - Database > Connect : Compass, installation Compass, copier le lien mongodb+srv (string URI)
   - Compass : ajouter des posts ou importer un fichier json
 - [x] Autre option : MongoDB en localhost
-  - (install-mongodb-on-ubuntu)[https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/]
-  - (mongosh commands)[https://www.mongodb.com/docs/mongodb-shell/reference/access-mdb-shell-help/] : mongosh "mongodb://localhost:27017", show dbs, use blog, db.posts.insertOne( { "title":"First title (local)", "content":"First content" } );, db.posts.find()
+  - [install-mongodb-on-ubuntu](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
+  - [mongosh commands](https://www.mongodb.com/docs/mongodb-shell/reference/access-mdb-shell-help/) : mongosh "mongodb://localhost:27017", show dbs, use blog, db.posts.insertOne( { "title":"First title (local)", "content":"First content" } );, db.posts.find()
 - [x] Configurer MongoDB pour Node
   - Installer MongoDB driver : npm i mongoDB
   - Dans MongoDB Atlas : DataBase > Connect > Your Application
@@ -38,16 +46,22 @@
   - Préciser le format d'objet transmis à la base de données en JSON : app.use(express.json())
   - C : '/add' Ajouter un post avec <db>.<collection>.insertOne({title:"Hello", content:"Lorem"});
   - C : '/add' Ajouter un post avec le body .insertOne(req.body);
-  - Dans Postman, requêtes Post + Body + JSON avec { "title":"New title", "content":"New Content"}
+  - Dans Postman, requête Post + Body + JSON avec { "title":"New title", "content":"New Content"}
 - [x] Configurer le client
   - yarn create vite client --template react
   - cd client && yarn install && yarn dev
   - Extension React Dev Tools
-- [ ] Front : Créer la navigation
+- [x] Front : Créer la navigation
   - Installer react-router-dom : yarn add react-router-dom
-  -
-- [ ] ...
-- [ ] ...
+  - Route Home page <BrowserRouter><Layout><Routes><Route path="/" element={<Home />} />
+  - Utiliser Link pour ouvrir une page Post, son contenu en passant state ={{ id: item._id }} et useLocation
+- [x] Module service Axios
+  - Installer Axios : yarn add axios
+  - Fonction getPosts() qui retourne un promesse avec axios.get("http://localhost:4000") : Error CORS policy: No 'Access-Control-Allow-Origin'
+  - Installer Middleware Cors sur le backend
+  - Récupérer les données avec useState, useEffect et la fonction getPosts
+  - Ajouter des "?" pour éviter de bloquer l'application
+- [ ] Gérer le contexte
 - [ ] ...
 - [ ] ...
 - [ ] ...
