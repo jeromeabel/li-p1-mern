@@ -1,14 +1,33 @@
-import { useRef, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useMemo, useRef, useState } from 'react';
+import { useAppContext } from '../context';
 
 export default function Layout({ children }) {
-  const inputRef = useRef();
-  const textRef = useRef();
+  const { addPost } = useAppContext();
+  const [post, setPost] = useState({ title: null, content: null });
   const [isCollapsed, collapse] = useState(false);
 
+  const inputRef = useRef();
+  const textRef = useRef();
+
   const toggleVisibility = () => collapse(!isCollapsed);
-  const handleOnChange = (e) => console.log(e.targetValue);
-  const handleOnSubmit = (e) => e.preventDefault();
+
+  const handleOnChange = (e) => {
+    setPost({ ...post, [e.target.name]: e.target.value });
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    addPost(post);
+    setPost({ title: null, content: null });
+    inputRef.current.value = null;
+    textRef.current.value = null;
+    toggleVisibility(false);
+  };
+
+  const isValid = useMemo(() => {
+    return Object.values(post).some((value) => !value);
+  }, [post]);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -68,12 +87,15 @@ export default function Layout({ children }) {
               onChange={handleOnChange}
               placeholder="content"
             ></textarea>
-            <button type="submit" className="btn btn-primary mb-5 float-end">
+            <button
+              type="submit"
+              className="btn btn-primary mb-5 float-end"
+              disabled={isValid}
+            >
               Submit
             </button>
           </form>
         )}
-        {/* <Outlet /> */}
         {children}
       </div>
     </>

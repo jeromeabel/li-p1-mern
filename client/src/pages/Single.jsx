@@ -1,19 +1,10 @@
 import { useLocation, Link } from 'react-router-dom';
-import data from '../data';
+import { useAppContext } from '../context';
 
 export default function Single() {
-  /*
-  //v1
-  const {
-    state: { id },
-  } = useLocation();
-  const post = data.find((post) => post._id === id);
-  */
-
+  const { posts } = useAppContext();
   const params = useLocation();
-
-  const post = data.find((post) => post._id === params?.state?.id); // Optional chaining
-
+  const post = posts.find((post) => post._id === params?.state?.id);
   return (
     <>
       <Link to="/">back</Link>

@@ -2,14 +2,11 @@ import express from 'express';
 import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import path from 'path';
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = 4000;
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, '../client/dist'))); // Front-end
-
 dotenv.config();
 
 // const uri = process.env.STRING_URI;
@@ -29,23 +26,17 @@ async function runDB() {
 }
 runDB().catch(console.error);
 
-app.get('/posts', async (req, res) => {
+app.get('/', async (req, res) => {
   const posts = await client.db('blog').collection('posts').find().toArray();
   res.status(200).send(posts);
 });
 
-app.post('/posts/add', async (req, res) => {
+app.post('/insert', async (req, res) => {
   const results = await client
     .db('blog')
     .collection('posts')
     .insertOne(req.body);
-  const posts = await client.db('blog').collection('posts').find().toArray();
-  res.status(201).send(posts);
-});
-
-// Serve front end page
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+  res.status(200).send(results);
 });
 
 app.listen(port, () => {

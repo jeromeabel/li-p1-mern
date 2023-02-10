@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useAppContext } from './context';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Single from './pages/Single';
-import { useAppContext } from './context';
 
 export default function App() {
   const { fetchPosts } = useAppContext();
@@ -11,6 +11,7 @@ export default function App() {
   useEffect(() => {
     fetchPosts();
   }, []);
+
   return (
     <BrowserRouter>
       <Layout>

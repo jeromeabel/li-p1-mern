@@ -1,29 +1,20 @@
-// import { useEffect, useState } from 'react';
-import { useAppContext } from '../context';
+import React from 'react';
 import { Link } from 'react-router-dom';
-// import data from '../data';
-// import { getPosts } from '../service';
+import { useAppContext } from '../context';
 
 export default function List() {
-  // const [posts, setPosts] = useState([]);
-  // useEffect(() => {
-  //   getPosts().then(setPosts);
-  // }, []);
-
   const { posts } = useAppContext();
-  // debugger;
 
   return (
     <div className="mt-5">
-      <p>liste</p>
       {posts.map((post) => {
         const title = post?.title.split(' ').join('-');
         const content = `${post?.content.substring(0, 100)} ...`;
         return (
-          <div key={post?._id}>
+          <div key={post._id}>
             <h3>
-              <Link to={`/post/${title}`} state={{ id: post?._id }}>
-                {post?.title}
+              <Link to={`/post/${title}`} state={{ id: post._id }}>
+                {post.title}
               </Link>
             </h3>
             <p>{content}</p>

@@ -55,14 +55,24 @@
   - Installer react-router-dom : yarn add react-router-dom
   - Route Home page <BrowserRouter><Layout><Routes><Route path="/" element={<Home />} />
   - Utiliser Link pour ouvrir une page Post, son contenu en passant state ={{ id: item._id }} et useLocation
-- [x] Module service Axios
+- [x] Module service Axios : ./service/index.jsx
   - Installer Axios : yarn add axios
-  - Fonction getPosts() qui retourne un promesse avec axios.get("http://localhost:4000") : Error CORS policy: No 'Access-Control-Allow-Origin'
+  - Fonction getPosts() qui retourne une promesse avec axios.get("http://localhost:4000") : Error CORS policy: No 'Access-Control-Allow-Origin'
   - Installer Middleware Cors sur le backend
   - Récupérer les données avec useState, useEffect et la fonction getPosts
   - Ajouter des "?" pour éviter de bloquer l'application
-- [ ] Gérer le contexte
-- [ ] ...
+- [x] Gérer le contexte : ./context/index.jsx
+  - Export AppProvider et useAppContext
+  - AppProvider : useState (posts), getPosts, value = useMemo, return Provide
+  - useAppContext return useContext(AppContext)
+  - MAIN : Englober App avec AppProvider
+  - APP : Utiliser useAppContext pour récupérer fetchPosts et lancer cette fn via useEffect
+  - LIST : récupère useAppContext pour récupérer la fonction getPosts et les posts
+  - LAYOUT FORM : useState (post/setPost), handleChange (setPost), useAppContext pour récupérer addPost > handleSubmit(addPost)
+  - SINGLE : useLocation, useAppContext, filtrage
+- [x] Ajouter un proxy localhost:4000 au package.json du client
+- [x] Servir le site static avec Express.static, etc.
+  - Changer la route an ajoutant /posts/ au niveau serveur et client
 - [ ] ...
 - [ ] ...
 - [ ] ...
