@@ -4,7 +4,9 @@
   "description": "Créer et déployer un site full-stack MERN",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js"
+    "start": "nodemon --exec babel-node index.js",
+    "build": "babel src -d dist",
+    "serve": "node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,7 @@
     "nodemon": "^2.0.20"
   },
   "devDependencies": {
+    "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2"
